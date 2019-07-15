@@ -204,14 +204,14 @@ exports.chunksCssLoader = (target, minimize = true) => {
           test: /\.css$/,
           use: [
             ExtractCssChunks.loader,
-           {
-             loader: 'css-loader',
-             options: {
-               modules: true,
-               localIdentName: '[name]__[local]--[hash:base64:5]',
-               minimize,
-             },
-           },
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                localIdentName: '[name]__[local]--[hash:base64:5]',
+                minimize,
+              },
+            },
           ],
         },
       ],

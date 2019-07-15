@@ -1,8 +1,8 @@
 import React from 'react';
-import { withNamespaces, WithNamespaces } from 'react-i18next';
+import { withI18n } from 'react-i18next';
 
-class Foo extends React.Component<WithNamespaces> {
-  constructor(props: WithNamespaces) {
+class Foo extends React.Component<> {
+  constructor(props) {
     super(props);
     this.state = {};
   }
@@ -24,4 +24,4 @@ class Foo extends React.Component<WithNamespaces> {
 }
 
 
-export default withNamespaces()(Foo);
+export default withI18n()(Foo);

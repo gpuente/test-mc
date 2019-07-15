@@ -1,4 +1,4 @@
-require('@babel/polyfill');
+require('@babel/polyfill/noConflict');
 const express = require('express');
 const webpack = require('webpack'); // eslint-disable-line
 const path = require('path');
