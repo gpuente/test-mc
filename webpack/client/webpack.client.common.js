@@ -12,7 +12,7 @@ const {
 
 const parts = require('../parts');
 
-const baseEntry = [path.join(__dirname, '../../src/client/index.ts')];
+const baseEntry = [path.join(__dirname, '../../src/client/index.js')];
 const devEntry = spaMode ? [] : [
   'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false',
   'react-hot-loader/patch',

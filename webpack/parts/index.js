@@ -51,7 +51,7 @@ exports.babelLoader = () => ({
     rules: [
       {
         use: 'babel-loader',
-        test: /\.(j|t)sx?$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
       }
     ],
@@ -77,7 +77,7 @@ exports.uglifyJsPlugin = (enableSourceMap = false) => ({
             ascii_only: true,
           },
           compress: {
-            comparisons: false
+            comparisons: false,
           },
         },
       }),
@@ -109,7 +109,7 @@ exports.stats = (stats = 'normal') => ({
   stats,
 });
 
-exports.splitChunks = (placeholder = '[chunkhash]') => ({
+exports.splitChunks = () => ({
   optimization: {
     runtimeChunk: {
       name: 'bootstrap',
@@ -147,7 +147,6 @@ exports.alias = () => ({
       Layouts: path.join(__dirname, '../../src/layouts'),
       Assets: path.join(__dirname, '../../assets'),
       Redux: path.join(__dirname, '../../src/redux'),
-      Types: path.join(__dirname, '../../src/types'),
     },
   },
 });

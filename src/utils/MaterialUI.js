@@ -1,23 +1,23 @@
 import React from 'react';
-import { Theme,  createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 import blue from '@material-ui/core/colors/blue';
 
-export const jssID: string = 'jss-server-side';
+export const jssID = 'jss-server-side';
 
-export const createTheme = (theme?: Theme) => createMuiTheme({
+export const createTheme = theme => createMuiTheme({
   typography: {
     useNextVariants: true,
   },
   palette: {
     primary: blue,
-    type: 'light'
+    type: 'light',
   },
   ...theme,
 });
 
 export class RemoveStylesOnClient extends React.Component {
   componentDidMount() {
-    const jssStyles: HTMLElement = document.getElementById(jssID);
+    const jssStyles = document.getElementById(jssID);
 
     if (jssStyles && jssStyles.parentNode) {
       jssStyles.parentNode.removeChild(jssStyles);

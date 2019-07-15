@@ -1,7 +1,7 @@
 import React from 'react';
 import { withI18n } from 'react-i18next';
 
-class Foo extends React.Component<> {
+class Foo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};

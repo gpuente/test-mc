@@ -1,10 +1,6 @@
 import universal from 'react-universal-component';
 
-export interface AsyncProps {
-  page: string | Function;
-}
-
-const determineHowToLoad = ({ page }: AsyncProps) =>
+const determineHowToLoad = ({ page }) =>
   typeof page !== 'string' ? () => page() : import(`./${page}`);
 
 const UniversalComponent = universal(determineHowToLoad, { minDelay: 800 });

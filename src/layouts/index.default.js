@@ -1,10 +1,9 @@
-import { Layout } from 'Types/layout';
 import { jssID } from 'Utils/MaterialUI';
 
-export const layout: Layout = (config) => {
+/* eslint-disable import/prefer-default-export */
+export const layout = (config) => {
   const {
     js,
-    helmet,
     styles,
     cssHash,
     content,
@@ -15,17 +14,13 @@ export const layout: Layout = (config) => {
   } = config;
 
   return `<!doctype html>
-  <html ${helmet.htmlAttributes.toString()}>
+  <html>
     <head>
       <meta charset="utf-8">
       <title>react-universal-component-boilerplate</title>
       ${styles}
-
-      ${helmet.title.toString()}
-      ${helmet.meta.toString()}
-      ${helmet.link.toString()}
     </head>
-    <body ${helmet.bodyAttributes.toString()}>
+    <body>
       <div id="root">${content}</div>
       <style id="${jssID}">${materialCSS}</style>
       <script>

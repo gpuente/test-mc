@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles, Theme, createStyles } from '@material-ui/core/styles';
+import { withStyles, createStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
@@ -8,7 +8,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
-import { Switch, Route, withRouter, RouteComponentProps } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 
 import img from 'Assets/img/200.png';
 import 'Assets/css/styles.css';
@@ -16,7 +16,7 @@ import 'Assets/css/styles.css';
 
 import UniversalComponent from './UniversalComponent';
 
-const styles = (theme: Theme) => createStyles({
+const styles = theme => createStyles({
   appBar: {
     position: 'relative',
   },
@@ -43,24 +43,12 @@ const styles = (theme: Theme) => createStyles({
   }
 });
 
-export interface Props extends RouteComponentProps {
-  classes: {
-    appBar: string;
-    icon: string;
-    heroUnit: string;
-    heroContent: string;
-    heroButtons: string;
-    card: string;
-    bottom: string;
-  };
-};
-
-export class AppComponent extends React.Component<Props> {
-  constructor(props: Props) {
+export class AppComponent extends React.Component {
+  constructor(props) {
     super(props);
   }
 
-  onClick = (route: string) => {
+  onClick = (route) => {
     const { history } = this.props;
     history.push(route);
   }
@@ -68,18 +56,18 @@ export class AppComponent extends React.Component<Props> {
   render() {
     const { classes } = this.props;
 
-    const buttons: JSX.Element[] = [
+    const buttons = [
       <Button variant="contained" color="primary" onClick={() => this.onClick('/route/a')}>Bar</Button>,
       <Button variant="contained" color="primary" onClick={() => this.onClick('/route/b')}>Foo</Button>,
       <Button variant="contained" color="primary" onClick={() => this.onClick('/route/apollo/a')}>ApolloBar</Button>,
       <Button variant="contained" color="primary" onClick={() => this.onClick('/route/apollo/b')}>ApolloFoo</Button>,
     ];
 
-    const Root: React.SFC = () => <UniversalComponent page="common/Root" />
-    const Bar: React.SFC = () => <UniversalComponent page="common/Bar" />;
-    const Foo: React.SFC = () => <UniversalComponent page="common/Foo" />;
-    const ApolloA: React.SFC = () => <UniversalComponent page="common/ApolloBar" />;
-    const ApolloB: React.SFC = () => <UniversalComponent page="common/ApolloFoo" />
+    const Root = () => <UniversalComponent page="common/Root" />
+    const Bar = () => <UniversalComponent page="common/Bar" />;
+    const Foo = () => <UniversalComponent page="common/Foo" />;
+    const ApolloA = () => <UniversalComponent page="common/ApolloBar" />;
+    const ApolloB = () => <UniversalComponent page="common/ApolloFoo" />
 
     return (
       <React.Fragment>

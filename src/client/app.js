@@ -5,11 +5,10 @@ import { AppContainer } from 'react-hot-loader';
 import { I18nextProvider } from 'react-i18next';
 import { Provider } from 'react-redux';
 import JssProvider from 'react-jss/lib/JssProvider';
-import { MuiThemeProvider, createGenerateClassName, Theme } from '@material-ui/core/styles';
+import { MuiThemeProvider, createGenerateClassName } from '@material-ui/core/styles';
 import { configureStore } from 'Utils/ReduxSetup';
 import { RemoveStylesOnClient, createTheme } from 'Utils/MaterialUI';
 import { get } from 'Config';
-import AppClass from 'Views/index';
 
 
 const store = configureStore(window.__REDUX_STATE__);
@@ -20,9 +19,9 @@ window.i18n = i18n.init(i18nConfig);
 // Allow the passed state to be garbage-collected
 delete window.__REDUX_STATE__;
 
-export default (App: typeof AppClass): JSX.Element => {
+export default (App) => {
   const generateClassName = createGenerateClassName();
-  const theme: Theme = createTheme();
+  const theme = createTheme();
 
   const AppComponent = (
     <Provider store={store}>

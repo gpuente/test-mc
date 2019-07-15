@@ -6,21 +6,19 @@ const merge = require('webpack-merge');
 const { env, isProdEnv, isDevEnv } = require('../../src/utils/EnvInfo');
 const parts = require('../parts');
 
-const baseEntry = [path.join(__dirname, '../../src/server/router.ts')];
+const baseEntry = [path.join(__dirname, '../../src/server/router.js')];
 const devEntry = ['regenerator-runtime/runtime.js'];
 const entry = isDevEnv ? devEntry.concat(baseEntry) : baseEntry;
 
 const externals = fs
   .readdirSync(path.join(__dirname, '../../node_modules'))
   .filter(x => !/\.bin|react-universal-component|webpack-flush-chunks/.test(x))
-  .reduce((externals, mod) => {
-    externals[mod] = `commonjs ${mod}`;
-    return externals;
+  .reduce((ext, mod) => {
+    ext[mod] = `commonjs ${mod}`;
+    return ext;
   }, {});
 
 externals['react-dom/server'] = 'commonjs react-dom/server';
-
-
 
 const serverCommon = {
   name: 'server',

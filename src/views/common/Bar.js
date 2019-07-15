@@ -3,19 +3,13 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
 import { changeSSR } from 'Redux/actions';
-import { State } from 'Redux/reducers';
 
 import { Title } from './Layout';
 
 import * as styles from './styles.css';
 
-interface IProps {
-  isSSR: State['isSSR'];
-  changeSSR: (ssr: boolean) => void;
-};
-
-export class Bar extends Component<IProps, {}> {
-  constructor(props: IProps) {
+export class Bar extends Component {
+  constructor(props) {
     super(props);
     this.state = {};
   }
@@ -48,7 +42,7 @@ export class Bar extends Component<IProps, {}> {
   }
 }
 
-const mapStateToProps = (state: State) => ({
+const mapStateToProps = state => ({
   isSSR: state.isSSR,
 });
 

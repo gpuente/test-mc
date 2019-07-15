@@ -16,7 +16,7 @@ const theme =  createMuiTheme({
   },
 });
 
-const req = require.context('../src/views', true, /.stories.tsx$/);
+const req = require.context('../src/views', true, /.stories.js$/);
 function loadStories() {
   req.keys().forEach((filename) => req(filename));
 }

@@ -2,48 +2,37 @@ import { renderToString } from 'react-dom/server';
 import { flushChunkNames, clearChunks } from 'react-universal-component/server';
 import flushChunks from 'webpack-flush-chunks';
 import { getInitialLanguage, getInitialState } from 'Utils/I18nSSR';
-import layout, { Layout } from 'Layouts/index';
-import { IConfigLayout } from 'Types/layout';
-import { Request, Response } from 'Types/express';
-import { ClientStats } from 'Types/clientStats';
+import layout from 'Layouts/index';
 
 import buildApp from './app';
 
-export interface IData {
-  req: Request;
-  res: Response;
-  clientStats: ClientStats;
-};
-
-export default async (data: IData): Promise<string> => {
+export default async (data) => {
   try {
     const { clientStats, req } = data;
 
     const {
       app,
       store,
-      helmetStore,
       sheetsRegistry,
     } = buildApp(req);
 
     clearChunks();
 
-    const content: string = renderToString(app);
+    const content = renderToString(app);
 
-    const chunkNames: string[] = flushChunkNames();
+    const chunkNames = flushChunkNames();
     const chunks = flushChunks(clientStats, { chunkNames });
-    const materialCSS: string = sheetsRegistry.toString();
+    const materialCSS = sheetsRegistry.toString();
 
-    const layoutConfig: IConfigLayout = Object.assign({}, chunks, {
+    const layoutConfig = Object.assign({}, chunks, {
       content,
       materialCSS,
-      helmet: helmetStore.renderStatic(),
       reduxInitialState: store.getState(),
       i18nInitialState: getInitialState(req),
       i18nInitialLanguage: getInitialLanguage(req),
     });
 
-    const html: string = layout(layoutConfig, Layout.default);
+    const html = layout(layoutConfig, 'default');
     return html;
   } catch (err) {
     console.log(err); // eslint-disable-line
