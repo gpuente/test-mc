@@ -1,4 +1,3 @@
-import { getDataFromTree } from 'react-apollo';
 import { renderToString } from 'react-dom/server';
 import { flushChunkNames, clearChunks } from 'react-universal-component/server';
 import flushChunks from 'webpack-flush-chunks';
@@ -24,12 +23,8 @@ export default async (data: IData): Promise<string> => {
       app,
       store,
       helmetStore,
-      apolloClientSSR,
       sheetsRegistry,
     } = buildApp(req);
-
-    await getDataFromTree(app);
-    const apolloInitialState = apolloClientSSR.cache.extract();
 
     clearChunks();
 
@@ -41,7 +36,6 @@ export default async (data: IData): Promise<string> => {
 
     const layoutConfig: IConfigLayout = Object.assign({}, chunks, {
       content,
-      apolloInitialState,
       materialCSS,
       helmet: helmetStore.renderStatic(),
       reduxInitialState: store.getState(),

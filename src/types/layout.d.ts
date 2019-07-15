@@ -11,7 +11,6 @@ export interface IConfigLayout {
   content: string;
   materialCSS: string;
   reduxInitialState: State;
-  apolloInitialState: any;
   i18nInitialState: Partial<i18n>;
   i18nInitialLanguage: Ii18n['language'];
 }

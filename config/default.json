@@ -1,6 +1,5 @@
 {
   "default": "default_config",
-  "graphqlEndpoint": "https://graphql-pokemon.now.sh/",
   "port": 3011,
   "i18n": {
     "rootPath": "/src/i18n",
