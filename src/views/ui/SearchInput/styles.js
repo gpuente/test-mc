@@ -10,6 +10,7 @@ export default () => createStyles({
   input: {
     width: '100%',
     padding: 6,
+    fontSize: 18,
   },
   button: {
     padding: '5px 10px',

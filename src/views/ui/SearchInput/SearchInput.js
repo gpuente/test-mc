@@ -14,6 +14,11 @@ const SearchInput = (props) => {
 
   const [value, setValue] = useState(initialValue);
   const onChange = e => setValue(e.target.value);
+  const onEnter = e => {
+    if (e.key === 'Enter') {
+      onClick(value);
+    }
+  };
 
   return (
     <div className={classes.root}>
@@ -22,6 +27,7 @@ const SearchInput = (props) => {
         value={value}
         onChange={onChange}
         placeholder={placeholder}
+        onKeyPress={onEnter}
       />
       <ButtonBase className={classes.button} onClick={() => onClick(value)}>
         <SearchIcon
