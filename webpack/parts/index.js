@@ -23,7 +23,7 @@ exports.output = (target = 'client', placeholder = '[hash]', folder = '') => {
 
   if (target === 'client') {
     targetOutput = Object.assign({}, baseOutput, {
-      publicPath: '/',
+      publicPath: '/assets',
       chunkFilename: `[name].${placeholder}.js`,
     });
   }
@@ -31,7 +31,7 @@ exports.output = (target = 'client', placeholder = '[hash]', folder = '') => {
   if (target === 'server') {
     targetOutput = Object.assign({}, baseOutput, {
       libraryTarget: 'commonjs2',
-      publicPath: '/',
+      publicPath: '/assets',
     });
   }
 
