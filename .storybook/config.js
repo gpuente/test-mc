@@ -3,6 +3,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { withKnobs } from '@storybook/addon-knobs/react';
 import { configure, addDecorator } from '@storybook/react';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import blue from '@material-ui/core/colors/blue';
 
 
@@ -23,6 +24,7 @@ function loadStories() {
 
 const withProviders = (story) => (
   <MuiThemeProvider theme={theme}>
+    <CssBaseline />
     {story()}
   </MuiThemeProvider>
 );
