@@ -1,6 +1,17 @@
 {
-  "text": "Hola!",
-  "other": {
-    "one": "Hi"
+  "components": {
+    "searchbar": {
+      "placeholder": "Nunca dejes de buscar"
+    }
+  },
+  "modules": {
+    "detail": {
+      "description": "Descripción del producto",
+      "cta": "Comprar",
+      "new": "Nuevo",
+      "used": "Usado",
+      "sold": "Vendidos",
+      "not_specified": "Estado no especificado"
+    }
   }
 }

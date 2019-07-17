@@ -1,5 +1,6 @@
 import React from 'react';
 import i18n from 'i18next';
+import { loadCache } from 'axios-hooks'
 import { BrowserRouter } from 'react-router-dom';
 import { AppContainer } from 'react-hot-loader';
 import { I18nextProvider } from 'react-i18next';
@@ -10,6 +11,9 @@ import { configureStore } from 'Utils/ReduxSetup';
 import { RemoveStylesOnClient, createTheme } from 'Utils/MaterialUI';
 import { get } from 'Config';
 
+
+loadCache(window.__AXIOS_HOOKS_CACHE__);
+delete window.__AXIOS_HOOKS_CACHE__;
 
 const store = configureStore(window.__REDUX_STATE__);
 const i18nConfig = get('i18n.config');

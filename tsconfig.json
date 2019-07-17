@@ -19,7 +19,8 @@
       "Layouts/*": ["src/layouts/*"],
       "Assets/*": ["assets/*"],
       "Redux/*": ["src/redux/*"],
-      "Types/*": ["src/types/*"]
+      "Types/*": ["src/types/*"],
+      "UI/*": ["src/views/ui/*"]
     }
   }
 }

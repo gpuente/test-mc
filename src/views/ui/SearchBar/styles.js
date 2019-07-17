@@ -7,4 +7,8 @@ export default () => createStyles({
   logo: {
     width: 60,
   },
+  link: {
+    cursor: 'pointer',
+    textDecoration: 'none',
+  },
 });

@@ -4,6 +4,7 @@ import { jssID } from 'Utils/MaterialUI';
 export const layout = (config) => {
   const {
     js,
+    cache,
     styles,
     cssHash,
     content,
@@ -27,6 +28,7 @@ export const layout = (config) => {
         window.__REDUX_STATE__ = ${JSON.stringify(reduxInitialState).replace(/</g, '\\u003c')};
         window.__I18N_STATE__ = ${JSON.stringify(i18nInitialState).replace(/</g, '\\u003c')};
         window.__I18N_LANGUAGE__ = ${JSON.stringify(i18nInitialLanguage).replace(/</g, '\\u003c')};
+        window.__AXIOS_HOOKS_CACHE__ = ${JSON.stringify(cache).replace(/</g, '\\u003c')};
       </script>
       ${cssHash}
       ${js}

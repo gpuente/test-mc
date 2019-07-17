@@ -11,8 +11,12 @@ const SearchBar = (props) => {
   const {
     classes,
     onSubmit,
+    linkProps,
     placeholder,
+    linkComponent,
   } = props;
+
+  const Link = linkComponent;
 
   return (
     <AppBar
@@ -24,7 +28,9 @@ const SearchBar = (props) => {
         <Grid container spacing={24}>
           <Grid item xs={1} />
           <Grid item xs={1}>
-            <img src={logo} alt="logo" className={classes.logo}/>
+            <Link className={classes.link} {...linkProps}>
+              <img src={logo} alt="logo" className={classes.logo}/>
+            </Link>
           </Grid>
           <Grid item xs={9}>
             <SearchInput placeholder={placeholder} onClick={onSubmit} />
@@ -36,14 +42,22 @@ const SearchBar = (props) => {
 }
 
 SearchBar.defaultProps = {
+  linkProps: {},
   placeholder: '',
+  linkComponent: 'a',
 };
 
 SearchBar.propTypes = {
+  linkProps: PropTypes.object,
   placeholder: PropTypes.string,
   onSubmit: PropTypes.func.isRequired,
+  linkComponent: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func,
+  ]),
   classes: PropTypes.shape({
     logo: PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired,
     colorPrimary: PropTypes.string.isRequired,
   }).isRequired,
 };

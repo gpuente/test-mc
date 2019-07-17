@@ -1,10 +1,13 @@
+import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { flushChunkNames, clearChunks } from 'react-universal-component/server';
 import flushChunks from 'webpack-flush-chunks';
+import { serializeCache } from 'axios-hooks';
 import { getInitialLanguage, getInitialState } from 'Utils/I18nSSR';
 import layout from 'Layouts/index';
 
 import buildApp from './app';
+import routes from '../views/routes';
 
 export default async (data) => {
   try {
@@ -23,8 +26,10 @@ export default async (data) => {
     const chunkNames = flushChunkNames();
     const chunks = flushChunks(clientStats, { chunkNames });
     const materialCSS = sheetsRegistry.toString();
+    const cache = await serializeCache();
 
     const layoutConfig = Object.assign({}, chunks, {
+      cache,
       content,
       materialCSS,
       reduxInitialState: store.getState(),

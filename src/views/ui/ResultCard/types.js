@@ -5,7 +5,10 @@ export const resultType = {
   country: PropTypes.string,
   imageUrl: PropTypes.string,
   altImage: PropTypes.string,
-  component: PropTypes.string,
+  component: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func,
+  ]),
   description: PropTypes.string,
   description2: PropTypes.string,
   componentProps: PropTypes.object,
