@@ -54,7 +54,7 @@ Follow the next steps to install the project on your machine:
 
 ```bash
   # clone the repo
-  git clone https://github.com/comparaonline/test-mc.git
+  git clone https://github.com/gpuente/test-mc.git
 
   # install dependencies
   cd test-mc
