@@ -16,6 +16,7 @@ const getFetcher = ({ match }) => {
   return getProductInfo(params.id);
 };
 
+// This skip fetchig data when data comes from SSR
 const skip = ({ initialData, match }) => {
   const result = !!initialData[KEY]
     && (initialData[KEY].data.detail.id === match.params.id);

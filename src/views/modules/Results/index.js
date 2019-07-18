@@ -17,6 +17,8 @@ const getFetcher = ({ location }) => {
   return getResults(query.search);
 };
 
+// This skip fetchig data when data comes from SSR
+// or when query search is different that query search that comes from SSR
 const skip = ({ initialData, location }) => {
   const query = queryString.parse(location.search);
   const result = !!initialData[KEY]
