@@ -6,6 +6,4 @@ const Home = () => (
   </div>
 );
 
-Home.loadInitialData = 'hello there!';
-
 export default Home;

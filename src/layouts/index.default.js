@@ -9,6 +9,7 @@ export const layout = (config) => {
     cssHash,
     content,
     materialCSS,
+    initialData,
     reduxInitialState,
     i18nInitialState,
     i18nInitialLanguage,
@@ -29,6 +30,7 @@ export const layout = (config) => {
         window.__I18N_STATE__ = ${JSON.stringify(i18nInitialState).replace(/</g, '\\u003c')};
         window.__I18N_LANGUAGE__ = ${JSON.stringify(i18nInitialLanguage).replace(/</g, '\\u003c')};
         window.__AXIOS_HOOKS_CACHE__ = ${JSON.stringify(cache).replace(/</g, '\\u003c')};
+        window.__INITIAL_DATA__ = ${JSON.stringify(initialData).replace(/</g, '\\u003c')};
       </script>
       ${cssHash}
       ${js}

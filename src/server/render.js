@@ -7,17 +7,16 @@ import { getInitialLanguage, getInitialState } from 'Utils/I18nSSR';
 import layout from 'Layouts/index';
 
 import buildApp from './app';
-import routes from '../views/routes';
 
 export default async (data) => {
   try {
-    const { clientStats, req } = data;
+    const { clientStats, req, initialData = {} } = data;
 
     const {
       app,
       store,
       sheetsRegistry,
-    } = buildApp(req);
+    } = buildApp(req, initialData);
 
     clearChunks();
 
@@ -28,10 +27,12 @@ export default async (data) => {
     const materialCSS = sheetsRegistry.toString();
     const cache = await serializeCache();
 
+
     const layoutConfig = Object.assign({}, chunks, {
       cache,
       content,
       materialCSS,
+      initialData,
       reduxInitialState: store.getState(),
       i18nInitialState: getInitialState(req),
       i18nInitialLanguage: getInitialLanguage(req),

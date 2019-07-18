@@ -11,17 +11,36 @@ import 'Assets/css/styles.css';
 import styles from './styles';
 import UniversalComponent from './UniversalComponent';
 
-const Home = () => <UniversalComponent page="modules/Home" />;
-const Detail = () => <UniversalComponent page="modules/Detail" />;
-const Results = () => <UniversalComponent page="modules/Results" />
+
 
 const AppComponent = (props) => {
-  const { t, classes, history } = props;
+  const {
+    t,
+    classes,
+    history,
+    initialData,
+  } = props;
 
   const onSubmit = value => {
     const searchURL = encodeURI(`/items?search=${value}`);
     history.push(searchURL);
   };
+
+  const Home = () => <UniversalComponent page="modules/Home" />;
+
+  const Detail = () => (
+    <UniversalComponent
+      page="modules/Detail"
+      initialData={initialData}
+    />
+  );
+
+  const Results = () => (
+    <UniversalComponent
+      page="modules/Results"
+      initialData={initialData}
+    />
+  );
 
   return (
     <div>

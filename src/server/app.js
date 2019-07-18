@@ -10,7 +10,7 @@ import { createTheme } from 'Utils/MaterialUI';
 
 import App from '../views';
 
-export default (req) => {
+export default (req, initialData) => {
   const initialState = getInitialState({ req });
   const store = configureStore(initialState);
 
@@ -28,7 +28,7 @@ export default (req) => {
         <JssProvider registry={sheetsRegistry} generateClassName={generateClassName}>
           <MuiThemeProvider theme={theme} sheetsManager={sheetsManager}>
             <StaticRouter location={req.url} context={context}>
-              <App />
+              <App initialData={initialData}/>
             </StaticRouter>
           </MuiThemeProvider>
         </JssProvider>

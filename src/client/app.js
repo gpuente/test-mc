@@ -15,6 +15,7 @@ import { get } from 'Config';
 loadCache(window.__AXIOS_HOOKS_CACHE__);
 delete window.__AXIOS_HOOKS_CACHE__;
 
+const initialData = window.__INITIAL_DATA__;
 const store = configureStore(window.__REDUX_STATE__);
 const i18nConfig = get('i18n.config');
 
@@ -38,7 +39,7 @@ export default (App) => {
           <MuiThemeProvider theme={theme}>
             <RemoveStylesOnClient>
               <BrowserRouter>
-                <App />
+                <App initialData={initialData} />
               </BrowserRouter>
             </RemoveStylesOnClient>
           </MuiThemeProvider>
