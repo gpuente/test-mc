@@ -19,7 +19,7 @@ export const layout = (config) => {
   <html>
     <head>
       <meta charset="utf-8">
-      <title>react-universal-component-boilerplate</title>
+      <title>MercadoLibre</title>
       ${styles}
     </head>
     <body>
